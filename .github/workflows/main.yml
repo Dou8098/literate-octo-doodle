@@ -3,10 +3,10 @@ name: Brocken rear brakes
 on:
  push:
   branches:
-  - main
+    - main
  pull_request:
   branches:
-   - main
+    - main
 
 jobs:
  test:
@@ -33,4 +33,4 @@ jobs:
        pip install -r requirements.txt
        
    - name: go pytest
-     run: pytest
+     run: pytest tests/ --disable-warnings --maxfail=5
