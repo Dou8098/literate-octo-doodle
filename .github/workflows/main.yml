@@ -13,10 +13,10 @@ jobs:
   runs-on: ubuntu-latest
   steps:
    - name: lounch test
-     uses: action/checkout@v4
+     uses: actions/checkout@v4
 
    - name: setup Python
-     uses: action/setup-python@v4
+     uses: actions/setup-python@v4
      with:
        python_version: '3.10'
 
