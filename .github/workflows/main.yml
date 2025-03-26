@@ -27,3 +27,20 @@ jobs:
        
    - name: go pytest
      run: pytest tests/ 
+     deploy:
+    needs: test  # Выполняется только если тесты прошли
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /path/to/your/project
+            git pull origin main
+            systemctl restart myapp  # Перезапуск сервиса (если есть)
